@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class DashBoardActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener, PatientsFragment.IPatientFragment, HomeFragment.IHomeFragment {
+public class DashBoardActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener, AccountFragment.IAccountFragment, HomeFragment.IHomeFragment {
 
-    int UserID;
+    User User;
     BottomNavigationView navmain;
     Bundle arguments = new Bundle();
     FragmentManager fm = getSupportFragmentManager();
@@ -24,11 +24,11 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationBa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
         Intent intent = getIntent();
-        UserID = intent.getIntExtra("userid", 0);
+        User = (User) intent.getSerializableExtra("user");
         navmain = findViewById(R.id.navmain);
         navmain.setSelectedItemId(R.id.mhome);
         navmain.setOnItemSelectedListener(this);
-        arguments.putInt("userid", UserID);
+        arguments.putSerializable("user", User);
         FragmentTransaction trans = fm.beginTransaction();
         HomeFragment fragment = new HomeFragment();
         fragment.setArguments(arguments);
@@ -44,7 +44,7 @@ public class DashBoardActivity extends AppCompatActivity implements NavigationBa
             trans.replace(R.id.fragcon, fragment).addToBackStack(null).commit();
             return true;
         } else if (item.getItemId() == R.id.maccount) {
-            PatientsFragment fragment = new PatientsFragment();
+            AccountFragment fragment = new AccountFragment();
             fragment.setArguments(arguments);
             trans.replace(R.id.fragcon, fragment).addToBackStack(null).commit();
             return true;

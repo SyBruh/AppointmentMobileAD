@@ -2,6 +2,7 @@ package iss.workshop.appointmentapp;
 
 import android.content.Context;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -88,6 +89,75 @@ public class DataService {
     }
 
     public void AddPatient(int UserID,Patient patient,AddPatientListener addPatientListener){
-        String url = "http://10.0.2.2:8080/api/viewpatient?id=";
+        Patient responsepatient = new Patient();
+        String url = "http://10.0.2.2:8080/api/addpatient/"+UserID;
+        String formData = patient.toString();
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    responsepatient.setId(jsonObject.getInt("id"));
+                    responsepatient.setAddress(jsonObject.getString("address"));
+                    responsepatient.setName(jsonObject.getString("name"));
+                    responsepatient.setSex(jsonObject.getString("sex"));
+                    responsepatient.setAllergy(jsonObject.getString("allergy"));
+                    responsepatient.setMedical_condition(jsonObject.getString("medical_condition"));
+                    responsepatient.setAdditional_information(jsonObject.getString("additional_information"));
+                    addPatientListener.onResponse(responsepatient);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                addPatientListener.onError("Error occur");
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return formData.getBytes();
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+    public interface GetDepartmentsListener{
+        void onError(String message);
+        void onResponse(List<Department> departments);
+    }
+
+    public void GetDepartments(GetDepartmentsListener getDepartmentsListener){
+        List<Department> departments = new ArrayList<>();
+        String url = "http://10.0.2.2:8080/api/getdepartments";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for(int i = 0;i<response.length();i++){
+                        Department department = new Department();
+                        JSONObject data = (JSONObject) response.get(0);
+                        department.setId(data.getInt("id"));
+                        department.setName(data.getString("name"));
+                        departments.add(department);
+                    }
+                    getDepartmentsListener.onResponse(departments);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                getDepartmentsListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
     }
 }

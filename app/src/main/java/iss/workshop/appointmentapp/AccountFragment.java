@@ -11,51 +11,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class AccountFragment extends Fragment implements View.OnClickListener {
 
     private User user;
 
-    TextView txthello;
-    Button btndepartment;
-    Button btnappointment;
-    Button btnmap;
-    ListView ListAppointments;
+    TextView txtusername;
+    Button btnpatientList;
+    Button btnappointmenthistory;
+    Button btnlogout;
+
     public void setUser(User user){
         this.user = user;
     }
-
-    public HomeFragment() {
+    public AccountFragment() {
         // Required empty public constructor
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.btndepartment){
-            Intent intent = new Intent((Context) iHomeFragment,DepartmentList.class);
+        if (id == R.id.btnpatientlist){
+            Intent intent = new Intent((Context) iAccountFragment,PatientsList.class);
             intent.putExtra("user",user);
             startActivity(intent);
         }
     }
 
-    public interface IHomeFragment{
-
+    public interface IAccountFragment{
     }
-
-    private IHomeFragment iHomeFragment;
-
-    public void setiHomeFragment(IHomeFragment iHomeFragment){
-        this.iHomeFragment = iHomeFragment;
-    }
+    private IAccountFragment iAccountFragment;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        iHomeFragment = (IHomeFragment) context;
+        iAccountFragment = (IAccountFragment) context;
     }
 
     @Override
@@ -70,11 +62,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        txthello = view.findViewById(R.id.txtHello);
-        btndepartment = view.findViewById(R.id.btndepartment);
-        btnappointment = view.findViewById(R.id.btnappointment);
-        btnmap = view.findViewById(R.id.btnmap);
+        View view = inflater.inflate(R.layout.fragment_account, container, false);
+        txtusername = view.findViewById(R.id.txtusername);
+        btnpatientList = view.findViewById(R.id.btnpatientlist);
+        btnappointmenthistory = view.findViewById(R.id.btnappointmenthistory);
+        btnlogout = view.findViewById(R.id.btnlogout);
         return view;
     }
 
@@ -85,9 +77,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         if (bundle != null){
             user = (User) bundle.getSerializable("user");
         }
-        txthello.setText("Hello " + user.getName());
-        btndepartment.setOnClickListener(this);
-        btnappointment.setOnClickListener(this);
-        btnmap.setOnClickListener(this);
+        txtusername.setText(user.getName());
+        btnappointmenthistory.setOnClickListener(this);
+        btnlogout.setOnClickListener(this);
+        btnpatientList.setOnClickListener(this);
     }
 }

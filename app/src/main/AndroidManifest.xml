@@ -16,8 +16,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".AddPatientActivity"
+            android:name=".DoctorDetail"
             android:exported="false" />
+        <activity
+            android:name=".DoctorList"
+            android:exported="false" />
+        <activity
+            android:name=".DepartmentList"
+            android:exported="false" />
+        <activity
+            android:name=".PatientsList"
+            android:exported="false"
+            android:parentActivityName=".PatientsList" />
+        <activity
+            android:name=".AddPatientActivity"
+            android:exported="false"
+            android:parentActivityName=".AddPatientActivity" />
         <activity
             android:name=".DashBoardActivity"
             android:exported="false" />

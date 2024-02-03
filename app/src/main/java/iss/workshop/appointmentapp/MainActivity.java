@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText txtname;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                                 user1.setName(data.getString("name"));
                                 user1.setPassword(data.getString("password"));
                                 Intent intent = new Intent(MainActivity.this,DashBoardActivity.class);
-                                intent.putExtra("userid",user1.getId());
+                                intent.putExtra("user", (Serializable) user1);
                                 startActivity(intent);
                             } catch (JSONException e) {
                                 e.printStackTrace();

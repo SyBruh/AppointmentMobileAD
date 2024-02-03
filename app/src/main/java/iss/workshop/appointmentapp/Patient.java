@@ -3,9 +3,10 @@ package iss.workshop.appointmentapp;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Patient {
+public class Patient implements Serializable {
 
     private int id;
     private String name;
@@ -18,6 +19,16 @@ public class Patient {
     public Patient() {
 
     }
+
+    public Patient(String name, String address, String sex, String allergy, String medical_condition, String additional_information) {
+        this.name = name;
+        this.address = address;
+        this.sex = sex;
+        this.allergy = allergy;
+        this.medical_condition = medical_condition;
+        this.additional_information = additional_information;
+    }
+
     public int getId() {
         return id;
     }
