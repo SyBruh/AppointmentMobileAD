@@ -4,70 +4,232 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#3C3C3C"
     tools:context=".AccountFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="83dp"
-            android:layout_height="83dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="83dp"
-                android:layout_height="88dp"
-                tools:src="@tools:sample/avatars" />
-        </androidx.cardview.widget.CardView>
-
         <TextView
-            android:id="@+id/txtusername"
+            android:id="@+id/PatientName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="TextView"
+            android:layout_marginTop="8dp"
+            android:text="xxx"
+            android:textColor="#3C3C3C"
+            android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.191"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnpatientlist"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="104dp"
-            android:text="Patients"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-        <Button
-            android:id="@+id/btnappointmenthistory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Appointment History"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnpatientlist" />
-
-        <Button
-            android:id="@+id/btnlogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logout"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="75dp"
+            android:layout_height="76dp"
+            app:cardCornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnappointmenthistory" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.058">
+
+            <ImageView
+                android:id="@+id/PatientPicture"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="#D5D6D6" />
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="101dp"
+            android:layout_height="18dp"
+            android:src="@drawable/editbox"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.21"
+            app:tint="#D5D6D6" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📌Singapore"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            app:textColor="#5A5959" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="782dp"
+            android:layout_height="266dp"
+            android:rotation="90"
+            android:src="@android:drawable/status_bar_item_app_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.162"
+            app:tint="#D4D5D5" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbox"
+            android:backgroundTint="#3C3C3C"
+            android:text="Log out"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.877" />
+
+        <Button
+            android:id="@+id/AddPatient"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.004"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+
+        <Button
+            android:id="@+id/Appointment1"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.685" />
+
+        <Button
+            android:id="@+id/Appointment2"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.835"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.685" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Patients"
+            android:textColor="#3C3C3C"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/ViewPatient"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Appointment History"
+            android:textColor="#3C3C3C"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/Appointment1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ViewPatient"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="8dp"
+            android:text="View Patients"
+            app:layout_constraintEnd_toEndOf="@+id/ViewPatient"
+            app:layout_constraintStart_toStartOf="@+id/ViewPatient"
+            app:layout_constraintTop_toBottomOf="@+id/ViewPatient" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Add Patient"
+            app:layout_constraintEnd_toEndOf="@+id/AddPatient"
+            app:layout_constraintStart_toStartOf="@+id/AddPatient"
+            app:layout_constraintTop_toBottomOf="@+id/AddPatient" />
+
+        <Button
+            android:id="@+id/SeeAll"
+            android:layout_width="54dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/editbox"
+            android:backgroundTint="#3C3C3C"
+            android:text="See All"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView20" />
+
+        <Button
+            android:id="@+id/ViewPatient"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="208dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.394" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Appointment1"
+            app:layout_constraintEnd_toEndOf="@+id/Appointment1"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="@+id/Appointment1"
+            app:layout_constraintTop_toBottomOf="@+id/Appointment1" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Appointment2"
+            app:layout_constraintEnd_toEndOf="@+id/Appointment2"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="@+id/Appointment2"
+            app:layout_constraintTop_toBottomOf="@+id/Appointment2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
