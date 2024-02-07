@@ -16,27 +16,44 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DoctorDetail"
+            android:name=".activity.AppointmentDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".DoctorList"
+            android:name=".activity.PatientDetatilActivity"
             android:exported="false" />
         <activity
-            android:name=".DepartmentList"
-            android:exported="false" />
-        <activity
-            android:name=".PatientsList"
+            android:name=".activity.DoctorScheduleActivity"
             android:exported="false"
-            android:parentActivityName=".PatientsList" />
+            android:parentActivityName=".activity.DoctorScheduleActivity" />
         <activity
-            android:name=".AddPatientActivity"
+            android:name=".activity.AppointmentHistory"
             android:exported="false"
-            android:parentActivityName=".AddPatientActivity" />
+            android:parentActivityName=".activity.AppointmentHistory" />
         <activity
-            android:name=".DashBoardActivity"
+            android:name=".activity.DoctorDetail"
+            android:exported="false"
+            android:parentActivityName=".activity.DoctorDetail" />
+        <activity
+            android:name=".activity.DoctorList"
+            android:exported="false"
+            android:parentActivityName=".activity.DoctorList" />
+        <activity
+            android:name=".activity.DepartmentList"
+            android:exported="false"
+            android:parentActivityName=".activity.DepartmentList" />
+        <activity
+            android:name=".activity.PatientsList"
+            android:exported="false"
+            android:parentActivityName=".activity.PatientsList" />
+        <activity
+            android:name=".activity.AddPatientActivity"
+            android:exported="false"
+            android:parentActivityName=".activity.AddPatientActivity" />
+        <activity
+            android:name=".activity.DashBoardActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
