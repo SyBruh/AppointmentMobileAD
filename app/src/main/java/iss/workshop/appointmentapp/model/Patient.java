@@ -87,7 +87,7 @@ public class Patient extends JSONObject implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        String str =  "name="+name+"&address="+address+"&sex="+sex+"&allergy="+allergy+"&medical_condition="+medical_condition+"&additional_information"+additional_information;
+        String str =  "name="+name+"&address="+address+"&sex="+sex+"&allergy="+allergy+"&medical_condition="+medical_condition+"&additional_information="+additional_information;
         return str;
     }
 }

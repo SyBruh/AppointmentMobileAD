@@ -1,10 +1,13 @@
 package iss.workshop.appointmentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -36,6 +39,7 @@ public class PatientDetatilActivity extends AppCompatActivity {
     TextView txtaddinfodetail;
     ListView listrecord;
 
+    Button btnupdatepatientdetail;
     List<Appointment> filter = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +49,15 @@ public class PatientDetatilActivity extends AppCompatActivity {
         user = (User) intent.getSerializableExtra("user");
         patient = (Patient) intent.getSerializableExtra("patient");
         txtpatientnamedetail = findViewById(R.id.txtpatientnamedetail);
-        txtpatientnamedetail.setText(patient.getName());
         txtpatientaddressdetail = findViewById(R.id.txtpatientaddressdetail);
-        txtpatientaddressdetail.setText(patient.getAddress());
         txtpatientallergydetail = findViewById(R.id.txtpatientallergydetail);
-        txtpatientallergydetail.setText(patient.getAllergy());
         txtaddinfodetail = findViewById(R.id.txtaddinfodetail);
-        txtaddinfodetail.setText(patient.getAdditional_information());
         radiomale = findViewById(R.id.radiomale);
         radiofemale = findViewById(R.id.radiofemale);
         radioother = findViewById((R.id.radioother));
         radsex = findViewById(R.id.radsex);
-        switch (patient.getSex()){
-            case "male" : radsex.check(R.id.radiomale);
-            case "female" : radsex.check(R.id.radiofemale);
-            case "other" : radsex.check(R.id.radioother);
-        }
+        btnupdatepatientdetail = findViewById(R.id.btnupdatepatientdetail);
+        settinginterface();
         listrecord = findViewById(R.id.listrecordview);
         DataService ds = new DataService(this);
         ds.GetAppointments(user.getId(), new DataService.GetAppointmentsListener() {
@@ -80,5 +77,40 @@ public class PatientDetatilActivity extends AppCompatActivity {
                 listrecord.setAdapter(adapter);
             }
         });
+        btnupdatepatientdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                patient.setName(txtpatientnamedetail.getText().toString());
+                patient.setAddress(txtpatientaddressdetail.getText().toString());
+                RadioButton radcheck = findViewById(radsex.getCheckedRadioButtonId());
+                patient.setSex(radcheck.getText().toString());
+                patient.setAllergy(txtpatientallergydetail.getText().toString());
+                patient.setAdditional_information(txtaddinfodetail.getText().toString());
+                ds.UpdatePatient(user.getId(),patient, new DataService.UpdatePatientListener() {
+                    @Override
+                    public void onError(String message) {
+                        Toast.makeText(getBaseContext(),message,Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onResponse(Patient patient) {
+                        Toast.makeText(getBaseContext(),"Update successful",Toast.LENGTH_LONG).show();
+                        settinginterface();
+                    }
+                });
+            }
+        });
+    }
+
+    public void settinginterface(){
+        txtpatientnamedetail.setText(patient.getName());
+        txtpatientaddressdetail.setText(patient.getAddress());
+        txtpatientallergydetail.setText(patient.getAllergy());
+        txtaddinfodetail.setText(patient.getAdditional_information());
+        switch (patient.getSex()){
+            case "male" : radsex.check(R.id.radiomale);break;
+            case "female" : radsex.check(R.id.radiofemale);break;
+            case "other" : radsex.check(R.id.radioother);break;
+        }
     }
 }

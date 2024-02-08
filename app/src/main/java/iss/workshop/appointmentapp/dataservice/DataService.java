@@ -306,4 +306,42 @@ public class DataService {
         };
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
+    public interface UpdatePatientListener{
+        void onError(String message);
+        void onResponse(Patient patient);
+    }
+
+    public void UpdatePatient(int userid,Patient patient,UpdatePatientListener updatePatientListener){
+
+        String url = "http://10.0.2.2:8080/api/updatepatient/"+userid;
+        String formData = "id="+ patient.getId() + "&" +patient.toString();
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    Patient responsepatient = new Patient(jsonObject);
+                    updatePatientListener.onResponse(responsepatient);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                updatePatientListener.onError("Error occur");
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return formData.getBytes();
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
 }
