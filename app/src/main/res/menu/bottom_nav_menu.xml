@@ -3,10 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mhome"
-        android:icon="@color/material_dynamic_primary60"
         android:title="Home" />
     <item
         android:id="@+id/maccount"
-        android:icon="?android:attr/colorPressedHighlight"
         android:title="Account" />
 </menu>
