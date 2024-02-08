@@ -62,14 +62,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📌Singapore"
+            android:textColor="#3C3C3C"
             android:textSize="10sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            android:textColor="#3C3C3C" />
+            app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -89,6 +89,7 @@
             android:id="@+id/btnlogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/editbox"
             android:backgroundTint="#3C3C3C"
             android:text="Log out"
@@ -110,19 +111,21 @@
             app:layout_constraintHorizontal_bias="0.004"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.394" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="8dp"
             android:text="Patients"
             android:textColor="#3C3C3C"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/btnpatientlist"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <TextView
             android:id="@+id/textView21"
@@ -155,17 +158,17 @@
             app:layout_constraintHorizontal_bias="0.245"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.394" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <Button
             android:id="@+id/btnappointmenthistory"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_width="337dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="50dp"
             android:text="Appointment History"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btnpatientlist"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/btnaddpatient"
             app:layout_constraintTop_toBottomOf="@+id/btnpatientlist" />
 
 

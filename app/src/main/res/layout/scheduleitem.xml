@@ -9,12 +9,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="114dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/editbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
-        android:background="@drawable/editbox">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,6 +27,8 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="24dp"
                 android:text="Date : "
+                android:textColor="#3C3C3C"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,18 +38,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
                 android:text="TextView"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView21"
                 app:layout_constraintStart_toEndOf="@+id/textView21"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textView21" />
 
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:text="Time : "
+                android:textColor="#3C3C3C"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
@@ -58,11 +61,11 @@
                 android:id="@+id/txttimeschedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
                 android:text="Textview"
-                app:layout_constraintStart_toEndOf="@+id/textView25"
-                app:layout_constraintTop_toBottomOf="@+id/txtscheduledate" />
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                app:layout_constraintStart_toStartOf="@+id/txtscheduledate"
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
