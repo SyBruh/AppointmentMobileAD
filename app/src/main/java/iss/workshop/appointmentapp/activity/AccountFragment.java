@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.model.User;
 
 
 public class AccountFragment extends Fragment implements View.OnClickListener {
@@ -35,6 +38,10 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         int id = v.getId();
         if (id == R.id.btnpatientlist){
             Intent intent = new Intent((Context) iAccountFragment,PatientsList.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
+        } else if (id == R.id.btnappointmenthistory) {
+            Intent intent = new Intent((Context) iAccountFragment,AppointmentHistory.class);
             intent.putExtra("user",user);
             startActivity(intent);
         }

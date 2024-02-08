@@ -1,8 +1,7 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +12,12 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.adapter.PatientAdapter;
+import iss.workshop.appointmentapp.dataservice.DataService;
+import iss.workshop.appointmentapp.model.Patient;
+import iss.workshop.appointmentapp.model.User;
 
 public class PatientsList extends AppCompatActivity {
 

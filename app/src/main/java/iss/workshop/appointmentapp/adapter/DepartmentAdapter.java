@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,10 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.model.Department;
 
 public class DepartmentAdapter extends ArrayAdapter<Object> {
 

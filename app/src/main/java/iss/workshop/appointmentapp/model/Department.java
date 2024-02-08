@@ -1,4 +1,6 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.model;
+
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.List;
@@ -22,6 +24,11 @@ public class Department implements Serializable {
 
     private int id;
     private String name;
+
+    public Department(JSONObject json){
+        this.id = json.optInt("id", 0);
+        this.name = json.optString("name", "");
+    }
     public Department() {
 
     }

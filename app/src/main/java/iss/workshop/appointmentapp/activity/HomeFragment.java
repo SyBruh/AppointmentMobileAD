@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.adapter.AppointmentAdapter;
+import iss.workshop.appointmentapp.dataservice.DataService;
+import iss.workshop.appointmentapp.model.Appointment;
+import iss.workshop.appointmentapp.model.AppointmentStatusEnum;
+import iss.workshop.appointmentapp.model.User;
 
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -23,7 +35,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Button btndepartment;
     Button btnappointment;
     Button btnmap;
-    ListView ListAppointments;
+    ListView ListPendingAppointments;
+
+    List<Appointment> appointmentlist = new ArrayList<>();
     public void setUser(User user){
         this.user = user;
     }
@@ -75,6 +89,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btndepartment = view.findViewById(R.id.btndepartment);
         btnappointment = view.findViewById(R.id.btnappointment);
         btnmap = view.findViewById(R.id.btnmap);
+        ListPendingAppointments = view.findViewById(R.id.ListPendingAppointments);
         return view;
     }
 
@@ -89,5 +104,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btndepartment.setOnClickListener(this);
         btnappointment.setOnClickListener(this);
         btnmap.setOnClickListener(this);
+        DataService ds = new DataService((Context) iHomeFragment);
+        ds.GetAppointments(user.getId(), new DataService.GetAppointmentsListener() {
+            @Override
+            public void onError(String message) {
+                Toast.makeText((Context) iHomeFragment,message,Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onResponse(List<Appointment> appointments) {
+                for (Appointment appointment:appointments){
+                    if (appointment.getStatus().equals(AppointmentStatusEnum.Proceeding)){
+                        appointmentlist.add(appointment);
+                    }
+                }
+                AppointmentAdapter adapter = new AppointmentAdapter((Context) iHomeFragment,appointmentlist);
+                if(ListPendingAppointments!=null){
+                    ListPendingAppointments.setAdapter(adapter);
+                }
+            }
+        });
     }
 }

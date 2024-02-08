@@ -196,4 +196,5 @@
         android:text="(Status)"
         app:layout_constraintStart_toStartOf="@+id/Additional"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
+    tools:context=".activity.AppointmentDetailActivity">
 </androidx.constraintlayout.widget.ConstraintLayout>

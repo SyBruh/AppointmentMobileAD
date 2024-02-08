@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.model;
 
 import java.io.Serializable;
 

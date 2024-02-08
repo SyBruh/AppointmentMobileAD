@@ -1,14 +1,22 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.adapter.DepartmentAdapter;
+import iss.workshop.appointmentapp.dataservice.DataService;
+import iss.workshop.appointmentapp.model.Department;
+import iss.workshop.appointmentapp.model.User;
 
 public class DepartmentList extends AppCompatActivity {
 
@@ -36,6 +44,16 @@ public class DepartmentList extends AppCompatActivity {
                 if (departmentlistview!=null){
                     departmentlistview.setAdapter(adapter);
                 }
+            }
+        });
+
+        departmentlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(DepartmentList.this,DoctorList.class);
+                intent.putExtra("user",user);
+                intent.putExtra("departmentid",departmentList.get(position).getId());
+                startActivity(intent);
             }
         });
 

@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +12,12 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.model.User;
+
 public class DashBoardActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener, AccountFragment.IAccountFragment, HomeFragment.IHomeFragment {
 
-    User User;
+    iss.workshop.appointmentapp.model.User User;
     BottomNavigationView navmain;
     Bundle arguments = new Bundle();
     FragmentManager fm = getSupportFragmentManager();

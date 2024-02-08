@@ -1,4 +1,4 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.dataservice.DataService;
+import iss.workshop.appointmentapp.model.Patient;
+import iss.workshop.appointmentapp.model.User;
 
 public class AddPatientActivity extends AppCompatActivity {
 

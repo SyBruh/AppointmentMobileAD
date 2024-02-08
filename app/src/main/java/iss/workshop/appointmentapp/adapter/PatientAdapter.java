@@ -1,19 +1,19 @@
-package iss.workshop.appointmentapp;
+package iss.workshop.appointmentapp.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.List;
+
+import iss.workshop.appointmentapp.R;
+import iss.workshop.appointmentapp.model.Patient;
 
 public class PatientAdapter extends ArrayAdapter<Object> {
     private final Context context;
