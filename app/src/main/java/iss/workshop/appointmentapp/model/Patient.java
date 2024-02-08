@@ -3,10 +3,12 @@ package iss.workshop.appointmentapp.model;
 
 import androidx.annotation.NonNull;
 
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.List;
 
-public class Patient implements Serializable {
+public class Patient extends JSONObject implements Serializable {
 
     private int id;
     private String name;
@@ -27,6 +29,16 @@ public class Patient implements Serializable {
         this.allergy = allergy;
         this.medical_condition = medical_condition;
         this.additional_information = additional_information;
+    }
+
+    public Patient(JSONObject json){
+        this.id = json.optInt("id", 0);
+        this.name = json.optString("name", "");
+        this.address = json.optString("address", "");
+        this.sex = json.optString("sex", "");
+        this.allergy = json.optString("allergy", "");
+        this.medical_condition = json.optString("medical_condition", "");
+        this.additional_information = json.optString("additional_information", "");
     }
 
     public int getId() {

@@ -61,7 +61,8 @@ public class PatientsList extends AppCompatActivity {
         patientlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(),MainActivity.class);
+                Intent intent = new Intent(getBaseContext(),PatientDetatilActivity.class);
+                intent.putExtra("user",user);
                 intent.putExtra("patient",patientslist.get(position));
                 startActivity(intent);
             }

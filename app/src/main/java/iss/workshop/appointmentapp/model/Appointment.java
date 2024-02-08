@@ -20,6 +20,16 @@ public class Appointment extends JSONObject implements Serializable {
 
     private Staff staff;
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    private Patient patient;
+
     public Staff getStaff() {
         return staff;
     }
@@ -48,6 +58,7 @@ public class Appointment extends JSONObject implements Serializable {
         this.status = AppointmentStatusEnum.valueOf(json.optString("status", ""));
         this.MedicalCondition = json.optString("medical_condition","");
         this.staff = new Staff(json.optJSONObject("staff"));
+        this.patient = new Patient(json.optJSONObject("patient"));
     }
 
     public LocalDate getDate() {
