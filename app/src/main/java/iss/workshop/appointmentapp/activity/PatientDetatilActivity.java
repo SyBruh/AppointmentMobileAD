@@ -37,10 +37,8 @@ public class PatientDetatilActivity extends AppCompatActivity {
     RadioGroup radsex;
     TextView txtpatientallergydetail;
     TextView txtaddinfodetail;
-    ListView listrecord;
 
     Button btnupdatepatientdetail;
-    List<Appointment> filter = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,25 +56,7 @@ public class PatientDetatilActivity extends AppCompatActivity {
         radsex = findViewById(R.id.radsex);
         btnupdatepatientdetail = findViewById(R.id.btnupdatepatientdetail);
         settinginterface();
-        listrecord = findViewById(R.id.listrecordview);
         DataService ds = new DataService(this);
-        ds.GetAppointments(user.getId(), new DataService.GetAppointmentsListener() {
-            @Override
-            public void onError(String message) {
-                Toast.makeText(getBaseContext(),message,Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onResponse(List<Appointment> appointments) {
-                for (Appointment appointment: appointments){
-                    if (appointment.getPatient().getId() == patient.getId()){
-                        filter.add(appointment);
-                    }
-                }
-                MedicalRecordAdapter adapter = new MedicalRecordAdapter(PatientDetatilActivity.this,filter);
-                listrecord.setAdapter(adapter);
-            }
-        });
         btnupdatepatientdetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

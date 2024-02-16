@@ -24,6 +24,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
     TextView txtusername;
     Button btnpatientList;
     Button btnappointmenthistory;
+    Button btnaddnewpatient;
     Button btnlogout;
 
     public void setUser(User user){
@@ -43,6 +44,14 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         } else if (id == R.id.btnappointmenthistory) {
             Intent intent = new Intent((Context) iAccountFragment,AppointmentHistory.class);
             intent.putExtra("user",user);
+            startActivity(intent);
+        } else if (id == R.id.btnaddpatient) {
+
+            Intent intent = new Intent((Context) iAccountFragment,AddPatientActivity.class);
+            intent.putExtra("user",user);
+            startActivity(intent);
+        } else if (id == R.id.btnlogout) {
+            Intent intent = new Intent((Context) iAccountFragment, MainActivity.class);
             startActivity(intent);
         }
     }
@@ -71,6 +80,7 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         txtusername = view.findViewById(R.id.txtusername);
+        btnaddnewpatient = view.findViewById(R.id.btnaddpatient);
         btnpatientList = view.findViewById(R.id.btnpatientlist);
         btnappointmenthistory = view.findViewById(R.id.btnappointmenthistory);
         btnlogout = view.findViewById(R.id.btnlogout);
@@ -88,5 +98,6 @@ public class AccountFragment extends Fragment implements View.OnClickListener {
         btnappointmenthistory.setOnClickListener(this);
         btnlogout.setOnClickListener(this);
         btnpatientList.setOnClickListener(this);
+        btnaddnewpatient.setOnClickListener(this);
     }
 }

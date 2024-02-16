@@ -7,7 +7,7 @@
     tools:context=".activity.AppointmentDetailActivity">
 
     <TextView
-        android:id="@+id/AppointmentId"
+        android:id="@+id/txtqueuenumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
@@ -22,20 +22,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Doctor"
-        android:textColor="#3D3D3D"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/Date" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtpatientname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="XXX"
-        android:textColor="#3C3C3C"
+        android:textColor="#3C553C"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -54,8 +54,8 @@
         <ImageView
             android:id="@+id/PatientPicture"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:background="#D5D6D6" />
+            android:layout_height="match_parent"
+            android:background="@drawable/patiet" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -64,11 +64,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Date"
-        android:textColor="#3C3C3C"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/AppointmentId" />
+        app:layout_constraintTop_toBottomOf="@+id/txtqueuenumber" />
 
     <TextView
         android:id="@+id/DoctorName"
@@ -95,7 +95,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginBottom="10dp"
         android:text="Appointment Information"
-        android:textColor="#3C3C3C"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cardView"
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Department"
-        android:textColor="#3C3C3C"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView8"
@@ -120,8 +120,8 @@
 
         android:layout_marginStart="100dp"
         android:layout_marginTop="190dp"
-        android:text="Appointment ID"
-        android:textColor="#3C3C3C"
+        android:text="Queue Number"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="(Date)"
-        app:layout_constraintStart_toStartOf="@+id/AppointmentId"
+        app:layout_constraintStart_toStartOf="@+id/txtqueuenumber"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
@@ -141,7 +141,7 @@
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginBottom="140dp"
-        android:backgroundTint="#3C3C3C"
+        android:backgroundTint="#3C553C"
         android:text="Cancel"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,7 +155,7 @@
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#3C3C3C"
+        android:backgroundTint="#3C553C"
         android:text="OK"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,7 +168,7 @@
         android:layout_width="260dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="#3C3C3C"
+        android:backgroundTint="#3C553C"
         android:text="Feedback"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,7 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Appointment Status"
-        android:textColor="#3C3C3C"
+        android:textColor="#3C553C"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView10"

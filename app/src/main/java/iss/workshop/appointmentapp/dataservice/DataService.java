@@ -3,6 +3,7 @@ package iss.workshop.appointmentapp.dataservice;
 import android.content.Context;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -14,14 +15,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import iss.workshop.appointmentapp.model.Appointment;
 import iss.workshop.appointmentapp.model.AppointmentStatusEnum;
 import iss.workshop.appointmentapp.model.Department;
+import iss.workshop.appointmentapp.model.Feedback;
 import iss.workshop.appointmentapp.model.Patient;
 import iss.workshop.appointmentapp.model.Schedule;
 import iss.workshop.appointmentapp.model.Staff;
@@ -179,6 +184,7 @@ public class DataService {
     public void GetDoctors(int id,GetDoctorsListener getDoctorsListener){
         List<Staff> staffs = new ArrayList<>();
         String url = "http://10.0.2.2:8080/api/getdoctors?id="+id;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -206,6 +212,12 @@ public class DataService {
                 getDoctorsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
+
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -330,6 +342,272 @@ public class DataService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 updatePatientListener.onError("Error occur");
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return formData.getBytes();
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+    public interface GetSymptomsGroupListener{
+        void onError(String message);
+        void onResponse(List<String> symptomGroups);
+    }
+
+    public void GetSymptomsGroup(GetSymptomsGroupListener getSymptomsGroupListener){
+        List<String> symptomgroups = new ArrayList<>();
+        String url = "http://10.0.2.2:8080/api/getSymptomsGroup";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for(int i = 0;i<response.length();i++){
+                        symptomgroups.add(response.get(i).toString());
+                    }
+                    getSymptomsGroupListener.onResponse(symptomgroups);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                getSymptomsGroupListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+
+    public interface GetSymptomsListener{
+        void onError(String message);
+        void onResponse(List<String> symptoms);
+    }
+
+    public void GetSymptoms(String symptomgroup,GetSymptomsListener getSymptomsListener){
+        List<String> symptoms = new ArrayList<>();
+        String url = "http://10.0.2.2:8080/api/getSymptoms/"+symptomgroup;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for(int i = 0;i<response.length();i++){
+                        symptoms.add(response.get(i).toString());
+                    }
+                    getSymptomsListener.onResponse(symptoms);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                getSymptomsListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+    public interface PredictListener{
+        void onError(String message);
+        void onResponse(Department department);
+    }
+
+    public void Predict (int patientid,int userid,List<String> selectedsymptoms,PredictListener predictListener){
+        String StringList = selectedsymptoms.stream()
+                .map(symptom -> "symptoms=" + symptom)
+                .collect(Collectors.joining("&"));
+
+        String url = "http://10.0.2.2:8080/api/predict?patientid="+patientid+"&userid="+userid+"&"+StringList;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Department department = new Department(response);
+                predictListener.onResponse(department);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                predictListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+    public interface AddFeedbackListener{
+        void onError(String message);
+        void onResponse(Feedback feedback);
+    }
+
+    public void AddFeedback(int UserID,int Appointmentid,Feedback feedback,AddFeedbackListener addFeedbackListener){
+        String url = "http://10.0.2.2:8080/api/savefeedback?userid="+UserID+"&appointmentid="+Appointmentid;
+        String formData = feedback.toString();
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    Feedback responsefeedback = new Feedback(jsonObject);
+                    addFeedbackListener.onResponse(responsefeedback);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                addFeedbackListener.onError("Error occur");
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return formData.getBytes();
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+    public interface GetFeedbacksListener{
+        void onError(String message);
+        void onResponse(List<Feedback> feedbacks    );
+    }
+
+    public void GetFeedbacks(int id,GetFeedbacksListener getFeedbacksListener){
+        List<Feedback> feedbacks = new ArrayList<>();
+        String url = "http://10.0.2.2:8080/api/getfeedbacks?id="+id;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for(int i = 0;i<response.length();i++){
+                        Feedback feedback = new Feedback((JSONObject) response.get(i));
+                        feedbacks.add(feedback);
+                    }
+                    getFeedbacksListener.onResponse(feedbacks);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                getFeedbacksListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+
+    public interface KeywordsListener{
+        void onError(String message);
+        void onResponse(List<String> keywords);
+    }
+
+    public void GetKeywords (List<String> feedbackdeslist,KeywordsListener keywordsListener){
+        List<String> keywords = new ArrayList<>();
+        String StringList = feedbackdeslist.stream()
+                .map(des -> "feedbacks=" + des)
+                .collect(Collectors.joining("&"));
+
+        String url = "http://10.0.2.2:8080/api/getkeywords?"+StringList;
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for(int i = 0;i<response.length();i++){
+                        keywords.add(response.get(i).toString());
+                    }
+                    keywordsListener.onResponse(keywords);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                keywordsListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+    public interface CancelAppointmentListener{
+        void onError(String message);
+        void onResponse(Appointment appointment);
+    }
+
+    public void CancelAppointment(int id,CancelAppointmentListener cancelAppointmentListener){
+
+        String url = "http://10.0.2.2:8080/api/cancelappointment/"+id;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Appointment appointment = new Appointment(response);
+                cancelAppointmentListener.onResponse(appointment);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                cancelAppointmentListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+
+    }
+    public interface RemovePatientListener{
+        void onError(String message);
+        void onResponse(String success);
+    }
+
+    public void RemovePatient(int UserID,int PatientID,RemovePatientListener removePatientListener){
+        String url = "http://10.0.2.2:8080/api/removepatient/"+UserID+"/"+PatientID;
+        StringRequest request = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                removePatientListener.onResponse(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                removePatientListener.onError("Error occur");
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(request);
+    }
+    public interface AddUserListener{
+        void onError(String message);
+        void onResponse(User user);
+    }
+
+    public void AddUser(User user,AddUserListener addUserListener){
+        String url = "http://10.0.2.2:8080/api/registeruser";
+        String formData = user.toString();
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    User responseuser = new User(jsonObject);
+                    addUserListener.onResponse(responseuser);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                addUserListener.onError("Error occur");
             }
         }){
             @Override

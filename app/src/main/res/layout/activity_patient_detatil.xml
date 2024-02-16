@@ -5,165 +5,222 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.PatientDetatilActivity">
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="83dp"
+        android:layout_height="83dp"
         android:layout_marginTop="48dp"
-        android:text="Name : "
-        android:textStyle="bold"
+        app:cardBackgroundColor="#D2D2D2"
+        app:cardCornerRadius="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
-        android:text="Address : "
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtpatientnamedetail" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="80dp"
-        android:text="Sex : "
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/txtpatientnamedetail"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/patiet" />
+    </androidx.cardview.widget.CardView>
 
     <EditText
         android:id="@+id/txtpatientnamedetail"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="36dp"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toEndOf="@+id/textView23"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="280dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/editbox"
+        android:backgroundTint="#DCE6DC"
+        android:ems="10"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:hint="Name"
+        android:inputType="text"
+        android:textAlignment="textStart"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/txtpatientaddressdetail"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/txtpatientallergydetail"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/editbox"
+        android:backgroundTint="#DBE5DB"
+        android:ems="10"
+        android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintStart_toEndOf="@+id/textView26"
-        app:layout_constraintTop_toBottomOf="@+id/txtpatientnamedetail" />
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txtpatientaddressdetail"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <RadioGroup
-        android:id="@+id/radsex"
+    <EditText
+        android:id="@+id/txtaddinfodetail"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/editbox"
+        android:backgroundTint="#DBE5DB"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txtpatientallergydetail"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:text="Allergy"
+        android:textColor="#3C553C"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtpatientaddressdetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtpatientaddressdetail" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:text="Sex"
+        android:textColor="#3C553C"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtpatientnamedetail" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textColor="#3C553C"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:text="Address"
+        android:textColor="#3C553C"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txtpatientaddressdetail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radsex" />
+
+    <EditText
+        android:id="@+id/txtpatientaddressdetail"
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/editbox"
+        android:backgroundTint="#DBE5DB"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/txtpatientnamedetail"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Additional Information"
+        android:textColor="#3C553C"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtpatientallergydetail"
+        app:layout_constraintTop_toBottomOf="@+id/txtpatientallergydetail" />
+
+    <RadioGroup
+        android:id="@+id/radsex"
+        android:layout_width="191dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioother"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="other" />
-
-        <RadioButton
-            android:id="@+id/radiomale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="male" />
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
 
         <RadioButton
             android:id="@+id/radiofemale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="female" />
+            android:background="@drawable/editbox"
+            android:backgroundTint="#DBE5DB"
+            android:text="  female"
+            android:textColor="#565656"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/radiomale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbox"
+            android:backgroundTint="#DBE5DB"
+            android:text="  male"
+            android:textColor="#555555"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/radioother"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/editbox"
+            android:backgroundTint="#DBE5DB"
+            android:text="  other"
+            android:textColor="#555555"
+            android:textSize="10sp" />
+
     </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="56dp"
-        android:text="Allergy : "
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtpatientaddressdetail" />
-
-    <EditText
-        android:id="@+id/txtpatientallergydetail"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="44dp"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/txtpatientaddressdetail" />
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Additional Information"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtpatientallergydetail" />
-
-    <EditText
-        android:id="@+id/txtaddinfodetail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView33" />
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Medical Records"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnupdatepatientdetail" />
-
-    <ListView
-        android:id="@+id/listrecordview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/cardview_dark_background"
-        android:backgroundTint="@color/material_dynamic_neutral50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
     <Button
         android:id="@+id/btnupdatepatientdetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="87dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#3C553C"
         android:text="Update"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtaddinfodetail" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

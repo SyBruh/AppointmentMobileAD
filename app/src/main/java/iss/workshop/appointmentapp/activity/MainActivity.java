@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText txtname;
     EditText txtpassword;
+
+    TextView txtregisteruser;
     Button btnLogin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         txtname = findViewById(R.id.txtname);
         txtpassword = findViewById(R.id.txtpassword);
         btnLogin = findViewById(R.id.btnlogin);
+        txtregisteruser = findViewById(R.id.txtregisteruser);
         DataService ds = new DataService(this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+        txtregisteruser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,UserRegisterationActivity.class);
+                startActivity(intent);
             }
         });
     }

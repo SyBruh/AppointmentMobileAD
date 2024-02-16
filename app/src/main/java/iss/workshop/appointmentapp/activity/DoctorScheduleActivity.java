@@ -82,8 +82,9 @@ public class DoctorScheduleActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onResponse(Appointment appointment) {
-                                        Intent intent = new Intent(DoctorScheduleActivity.this, DashBoardActivity.class);
+                                        Intent intent = new Intent(DoctorScheduleActivity.this, SuccessfulPageActivity.class);
                                         intent.putExtra("user",user);
+                                        intent.putExtra("appointment",appointment);
                                         startActivity(intent);
                                     }
                                 });

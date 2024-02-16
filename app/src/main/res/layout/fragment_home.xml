@@ -24,8 +24,8 @@
             <ImageView
                 android:id="@+id/PatientPicture"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:background="#D5D6D6" />
+                android:layout_height="match_parent"
+                android:background="@drawable/patiet" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -34,11 +34,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
             android:text="Hello,xxx!"
-            android:textColor="#5A5959"
+            android:textColor="#3C553C"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintHorizontal_bias="0.125"
             app:layout_constraintStart_toEndOf="@+id/cardView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,13 +47,13 @@
             android:layout_width="101dp"
             android:layout_height="18dp"
             android:src="@drawable/editbox"
-            app:tint="#D5D6D6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.431"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.103" />
+            app:layout_constraintVertical_bias="0.103"
+            app:tint="#DCE6DC" />
 
         <TextView
             android:id="@+id/textView22"
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Let's get started..."
-            android:textColor="#5A5959"
+            android:textColor="#3C553C"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -83,15 +83,16 @@
             app:layout_constraintHorizontal_bias="0.139"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.175" />
+            app:layout_constraintVertical_bias="0.18" />
 
         <Button
             android:id="@+id/btndepartment"
             android:layout_width="99dp"
             android:layout_height="87dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/department1"
             app:layout_constraintEnd_toStartOf="@+id/btnappointment"
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,24 +100,27 @@
 
         <Button
             android:id="@+id/btnappointment"
-            android:layout_width="99dp"
+            android:layout_width="92dp"
             android:layout_height="87dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/appointment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <Button
             android:id="@+id/btnmap"
-            android:layout_width="99dp"
-            android:layout_height="87dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
+            android:layout_width="46dp"
+            android:layout_height="71dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/map"
+            app:layout_constraintBottom_toBottomOf="@+id/btnappointment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.508"
             app:layout_constraintStart_toEndOf="@+id/btnappointment"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toTopOf="@+id/btnappointment" />
 
         <ListView
             android:id="@+id/ListPendingAppointments"
@@ -135,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Appointments Schedule"
-            android:textColor="#5A5959"
+            android:textColor="#3C553C"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -176,14 +180,13 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text=" Map"
             android:textColor="#5A5959"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/btnmap"
             app:layout_constraintStart_toStartOf="@+id/btnmap"
-            app:layout_constraintTop_toBottomOf="@+id/btnmap" />
+            app:layout_constraintTop_toTopOf="@+id/textView16" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

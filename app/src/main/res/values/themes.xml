@@ -3,9 +3,10 @@
     <style name="Base.Theme.AppointmentApp" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">#3C3C3C</item>
+        <item name="colorPrimary">#3C553C</item>
         <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
-        <item name="colorAccent">@color/design_default_color_secondary</item>
+        <item name="colorAccent">#3C553C</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="Theme.AppointmentApp" parent="Base.Theme.AppointmentApp" />

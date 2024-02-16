@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="171dp"
         app:cardBackgroundColor="#6EB4EC"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,13 +18,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#d5d6d6"
-            android:backgroundTint="#D5d6d6">
+            android:backgroundTint="#DCE6DC">
 
             <TextView
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="20dp"
                 android:text="Appointment With : "
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,76 +37,70 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:layout_marginTop="32dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/textView17"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textView17" />
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
                 android:text="Queue Number : "
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/textView22"
+                app:layout_constraintStart_toStartOf="@+id/textView24"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
             <TextView
                 android:id="@+id/txtqueuenum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.031"
                 app:layout_constraintStart_toEndOf="@+id/textView20"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                app:layout_constraintTop_toTopOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
                 android:text="Status: "
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/txtqueuenum"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/txtstatusappointment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView22"
-                app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                app:layout_constraintTop_toTopOf="@+id/textView22" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="28dp"
                 android:text="Schedule: "
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                app:layout_constraintBottom_toTopOf="@+id/textView20"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                app:layout_constraintVertical_bias="0.14" />
 
             <TextView
                 android:id="@+id/txtscheduletime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
                 android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView24"
-                app:layout_constraintTop_toBottomOf="@+id/txtappointmentdoctor" />
+                app:layout_constraintTop_toTopOf="@+id/textView24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

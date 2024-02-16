@@ -32,15 +32,7 @@ public class PatientsList extends AppCompatActivity {
         setContentView(R.layout.activity_patients_list);
         Intent intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
-        btnaddnewpatient = findViewById(R.id.btnaddpatient);
-        btnaddnewpatient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PatientsList.this,AddPatientActivity.class);
-                intent.putExtra("user",user);
-                startActivity(intent);
-            }
-        });
+
         patientlistview = findViewById(R.id.patientListView);
         DataService ds = new DataService(this);
         ds.GetPatients(user.getId(), new DataService.GetPatientsListener() {
@@ -61,7 +53,7 @@ public class PatientsList extends AppCompatActivity {
         patientlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getBaseContext(),PatientDetatilActivity.class);
+                Intent intent = new Intent(getBaseContext(),PatientInformation.class);
                 intent.putExtra("user",user);
                 intent.putExtra("patient",patientslist.get(position));
                 startActivity(intent);

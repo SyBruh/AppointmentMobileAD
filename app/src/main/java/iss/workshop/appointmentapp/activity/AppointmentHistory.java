@@ -2,8 +2,11 @@ package iss.workshop.appointmentapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,6 +46,15 @@ public class AppointmentHistory extends AppCompatActivity {
                 if(appointmenthistorylistview!=null){
                     appointmenthistorylistview.setAdapter(adapter);
                 }
+            }
+        });
+        appointmenthistorylistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(AppointmentHistory.this,AppointmentDetailActivity.class);
+                intent.putExtra("user",user);
+                intent.putExtra("appointment",appointmentlist.get(position));
+                startActivity(intent);
             }
         });
     }

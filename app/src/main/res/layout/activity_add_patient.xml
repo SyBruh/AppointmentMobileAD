@@ -19,14 +19,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/AddPicture"
+        <ImageView
+            android:id="@+id/imageView6"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/editbox"
-            android:backgroundTint="#D2D2D2"
-            tools:src="@tools:sample/avatars"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/patiet" />
     </androidx.cardview.widget.CardView>
 
     <EditText
@@ -35,11 +32,14 @@
         android:layout_height="35dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/editbox"
-        android:backgroundTint="#D5D5D5"
+        android:backgroundTint="#DCE6DC"
         android:ems="10"
-        android:hint="     Name"
+        android:paddingLeft="16dp"
+        android:paddingEnd="16dp"
+        android:hint="Name"
         android:inputType="text"
-        android:textSize="10sp"
+        android:textAlignment="textStart"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +51,17 @@
         android:layout_height="70dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/editbox"
-        android:backgroundTint="#D3D3D3"
+        android:backgroundTint="#DBE5DB"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:textSize="10sp"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/txtadaddress"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -65,10 +71,17 @@
         android:layout_height="70dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/editbox"
-        android:backgroundTint="#D2D2D2"
+        android:backgroundTint="#DAE4DA"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/txtadallergy"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -78,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Allergy"
+        android:textColor="#3C553C"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtadaddress"
         app:layout_constraintTop_toBottomOf="@+id/txtadaddress" />
@@ -89,6 +103,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:text="Sex"
+        android:textColor="#3C553C"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtadpatientname" />
@@ -100,6 +115,7 @@
         android:layout_marginTop="16dp"
 
         android:text="Name"
+        android:textColor="#3C553C"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -111,6 +127,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:text="Address"
+        android:textColor="#3C553C"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txtadaddress"
         app:layout_constraintHorizontal_bias="0.0"
@@ -123,12 +140,17 @@
         android:layout_height="70dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/editbox"
-        android:backgroundTint="#D3D3D3"
+        android:backgroundTint="#DBE5DB"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:textColor="#A3A3A3"
-        android:textSize="10sp"
+        android:paddingLeft="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:textAlignment="textStart"
+        android:textColor="#585C58"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/txtadpatientname"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -138,6 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Additional Information"
+        android:textColor="#3C553C"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/txtadallergy"
         app:layout_constraintTop_toBottomOf="@+id/txtadallergy" />
@@ -159,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editbox"
-            android:backgroundTint="#D4D4D4"
+            android:backgroundTint="#DBE5DB"
             android:text="  female"
             android:textColor="#565656"
             android:textSize="10sp" />
@@ -169,7 +192,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editbox"
-            android:backgroundTint="#D4D4D4"
+            android:backgroundTint="#DBE5DB"
             android:text="  male"
             android:textColor="#555555"
             android:textSize="10sp" />
@@ -179,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/editbox"
-            android:backgroundTint="#D4D4D4"
+            android:backgroundTint="#DBE5DB"
             android:text="  other"
             android:textColor="#555555"
             android:textSize="10sp" />
@@ -191,7 +214,7 @@
         android:layout_width="87dp"
         android:layout_height="54dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#3C3C3C"
+        android:backgroundTint="#3C553C"
         android:text="Save"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
