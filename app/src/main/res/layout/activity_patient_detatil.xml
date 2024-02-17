@@ -211,11 +211,12 @@
     <Button
         android:id="@+id/btnupdatepatientdetail"
         android:layout_width="87dp"
-        android:layout_height="54dp"
+        android:layout_height="35dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#3C553C"
         android:text="Update"
         android:textColor="#FFFFFF"
+        android:background="@drawable/editbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

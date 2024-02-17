@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activity.AccountFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -162,6 +163,7 @@
             android:layout_marginTop="60dp"
             android:backgroundTint="#DCE6DC"
             android:text="Appointment History"
+            android:background="@drawable/editbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

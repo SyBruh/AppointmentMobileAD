@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedbackActivity">
+    tools:context="activity.FeedbackActivity">
 
     <Button
         android:id="@+id/btnSubmit"
@@ -15,6 +15,7 @@
         android:backgroundTint="#3C553C"
         android:text="Submit"
         android:textColor="#FFFFFF"
+        android:background="@drawable/editbox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

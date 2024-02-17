@@ -45,7 +45,8 @@ public class DataService {
 
     public void UserAuthen(String name,String password, UserAuthenListener userAuthenListener){
         User user;
-        String url = "http://10.0.2.2:8080/api/checkuser?name="+ name+"&password=" + password;
+        String url = "https://adprojectapi.azurewebsites.net/api/checkuser?name="+ name+"&password=" + password;
+        int timeoutMs = 20000;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url,null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -57,6 +58,11 @@ public class DataService {
                 userAuthenListener.onError("Not match");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
@@ -67,7 +73,8 @@ public class DataService {
 
     public void GetPatients(int UserID, GetPatientsListener getPatientsListener){
         List<Patient> patients = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/viewpatient?id="+ UserID;
+        String url = "https://adprojectapi.azurewebsites.net/api/viewpatient?id="+ UserID;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -95,6 +102,11 @@ public class DataService {
                 getPatientsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -105,7 +117,8 @@ public class DataService {
 
     public void AddPatient(int UserID,Patient patient,AddPatientListener addPatientListener){
         Patient responsepatient = new Patient();
-        String url = "http://10.0.2.2:8080/api/addpatient/"+UserID;
+        String url = "https://adprojectapi.azurewebsites.net/api/addpatient/"+UserID;
+        int timeoutMs = 20000;
         String formData = patient.toString();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -140,6 +153,11 @@ public class DataService {
                 return formData.getBytes();
             }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface GetDepartmentsListener{
@@ -149,7 +167,8 @@ public class DataService {
 
     public void GetDepartments(GetDepartmentsListener getDepartmentsListener){
         List<Department> departments = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getdepartments";
+        String url = "https://adprojectapi.azurewebsites.net/api/getdepartments";
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -172,6 +191,11 @@ public class DataService {
                 getDepartmentsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -183,8 +207,9 @@ public class DataService {
 
     public void GetDoctors(int id,GetDoctorsListener getDoctorsListener){
         List<Staff> staffs = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getdoctors?id="+id;
-        int timeoutMs = 20000;
+        String url = "https://adprojectapi.azurewebsites.net/api/getdoctors?id="+id;
+
+        int timeoutMs = 40000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -228,7 +253,8 @@ public class DataService {
 
     public void GetAppointments(int id,GetAppointmentsListener getAppointmentsListener){
         List<Appointment> appointments = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getappointments?id="+id;
+        String url = "https://adprojectapi.azurewebsites.net/api/getappointments?id="+id;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -249,6 +275,12 @@ public class DataService {
                 getAppointmentsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
+
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface GetSchedulesListener{
@@ -258,7 +290,8 @@ public class DataService {
 
     public void GetSchedules(int id,GetSchedulesListener getSchedulesListener){
         List<Schedule> schedules = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getschedules?id="+id;
+        String url = "https://adprojectapi.azurewebsites.net/api/getschedules?id="+id;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -278,6 +311,11 @@ public class DataService {
                 getSchedulesListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -287,8 +325,9 @@ public class DataService {
     }
 
     public void AddAppointment(int UserID,int StaffID,int PatientID,Appointment appointment,AddAppointmentListener addAppointmentListener){
-        String url = "http://10.0.2.2:8080/api/addappointment?userid="+UserID+"&staffid="+StaffID+"&patientid="+PatientID;
+        String url = "https://adprojectapi.azurewebsites.net/api/addappointment?userid="+UserID+"&staffid="+StaffID+"&patientid="+PatientID;
         String formData = appointment.toString();
+        int timeoutMs = 20000;
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -316,6 +355,11 @@ public class DataService {
                 return formData.getBytes();
             }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface UpdatePatientListener{
@@ -325,8 +369,9 @@ public class DataService {
 
     public void UpdatePatient(int userid,Patient patient,UpdatePatientListener updatePatientListener){
 
-        String url = "http://10.0.2.2:8080/api/updatepatient/"+userid;
+        String url = "https://adprojectapi.azurewebsites.net/api/updatepatient/"+userid;
         String formData = "id="+ patient.getId() + "&" +patient.toString();
+        int timeoutMs = 20000;
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -354,6 +399,11 @@ public class DataService {
                 return formData.getBytes();
             }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface GetSymptomsGroupListener{
@@ -363,7 +413,9 @@ public class DataService {
 
     public void GetSymptomsGroup(GetSymptomsGroupListener getSymptomsGroupListener){
         List<String> symptomgroups = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getSymptomsGroup";
+        String url = "https://adprojectapi.azurewebsites.net/api/getSymptomsGroup";
+        int timeoutMs = 20000;
+
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -382,6 +434,11 @@ public class DataService {
                 getSymptomsGroupListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -393,7 +450,8 @@ public class DataService {
 
     public void GetSymptoms(String symptomgroup,GetSymptomsListener getSymptomsListener){
         List<String> symptoms = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getSymptoms/"+symptomgroup;
+        String url = "https://adprojectapi.azurewebsites.net/api/getSymptoms/"+symptomgroup;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -412,6 +470,11 @@ public class DataService {
                 getSymptomsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -425,7 +488,8 @@ public class DataService {
                 .map(symptom -> "symptoms=" + symptom)
                 .collect(Collectors.joining("&"));
 
-        String url = "http://10.0.2.2:8080/api/predict?patientid="+patientid+"&userid="+userid+"&"+StringList;
+        String url = "https://adprojectapi.azurewebsites.net/api/predict?patientid="+patientid+"&userid="+userid+"&"+StringList;
+        //int timeoutMs = 20000;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -438,6 +502,11 @@ public class DataService {
                 predictListener.onError("Error occur");
             }
         });
+//        request.setRetryPolicy(new DefaultRetryPolicy(
+//                timeoutMs,
+//                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+//        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -447,7 +516,8 @@ public class DataService {
     }
 
     public void AddFeedback(int UserID,int Appointmentid,Feedback feedback,AddFeedbackListener addFeedbackListener){
-        String url = "http://10.0.2.2:8080/api/savefeedback?userid="+UserID+"&appointmentid="+Appointmentid;
+        String url = "https://adprojectapi.azurewebsites.net/api/savefeedback?userid="+UserID+"&appointmentid="+Appointmentid;
+        int timeoutMs = 20000;
         String formData = feedback.toString();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -476,6 +546,11 @@ public class DataService {
                 return formData.getBytes();
             }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface GetFeedbacksListener{
@@ -485,7 +560,8 @@ public class DataService {
 
     public void GetFeedbacks(int id,GetFeedbacksListener getFeedbacksListener){
         List<Feedback> feedbacks = new ArrayList<>();
-        String url = "http://10.0.2.2:8080/api/getfeedbacks?id="+id;
+        String url = "https://adprojectapi.azurewebsites.net/api/getfeedbacks?id="+id;
+        int timeoutMs = 20000;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -505,6 +581,11 @@ public class DataService {
                 getFeedbacksListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -519,8 +600,8 @@ public class DataService {
         String StringList = feedbackdeslist.stream()
                 .map(des -> "feedbacks=" + des)
                 .collect(Collectors.joining("&"));
-
-        String url = "http://10.0.2.2:8080/api/getkeywords?"+StringList;
+        int timeoutMs = 20000;
+        String url = "https://adprojectapi.azurewebsites.net/api/getkeywords?"+StringList;
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -539,6 +620,11 @@ public class DataService {
                 keywordsListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -549,7 +635,8 @@ public class DataService {
 
     public void CancelAppointment(int id,CancelAppointmentListener cancelAppointmentListener){
 
-        String url = "http://10.0.2.2:8080/api/cancelappointment/"+id;
+        String url = "https://adprojectapi.azurewebsites.net/api/cancelappointment/"+id;
+        int timeoutMs = 20000;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -562,6 +649,11 @@ public class DataService {
                 cancelAppointmentListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
 
     }
@@ -571,7 +663,8 @@ public class DataService {
     }
 
     public void RemovePatient(int UserID,int PatientID,RemovePatientListener removePatientListener){
-        String url = "http://10.0.2.2:8080/api/removepatient/"+UserID+"/"+PatientID;
+        String url = "https://adprojectapi.azurewebsites.net/api/removepatient/"+UserID+"/"+PatientID;
+        int timeoutMs = 20000;
         StringRequest request = new StringRequest(Request.Method.DELETE, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -583,6 +676,11 @@ public class DataService {
                 removePatientListener.onError("Error occur");
             }
         });
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
     public interface AddUserListener{
@@ -591,7 +689,8 @@ public class DataService {
     }
 
     public void AddUser(User user,AddUserListener addUserListener){
-        String url = "http://10.0.2.2:8080/api/registeruser";
+        String url = "https://adprojectapi.azurewebsites.net/api/registeruser";
+        int timeoutMs = 20000;
         String formData = user.toString();
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -620,6 +719,11 @@ public class DataService {
                 return formData.getBytes();
             }
         };
+        request.setRetryPolicy(new DefaultRetryPolicy(
+                timeoutMs,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 }

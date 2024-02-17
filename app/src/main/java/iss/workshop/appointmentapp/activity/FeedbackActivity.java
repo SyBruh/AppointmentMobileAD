@@ -45,7 +45,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 ds.AddFeedback(user.getId(), appointment.getId(), feedbackog, new DataService.AddFeedbackListener() {
                     @Override
                     public void onError(String message) {
-
+                        Toast.makeText((Context) FeedbackActivity.this,"Error occurs",Toast.LENGTH_LONG).show();
                     }
 
                     @Override

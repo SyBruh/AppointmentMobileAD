@@ -50,7 +50,7 @@ public class PredictDoctorList extends AppCompatActivity {
             @Override
             public void onResponse(List<Staff> staffs) {
                 adapter = new DoctorAdapter(getBaseContext(),staffs);
-                adapter.setDepartmentid(departmentpredict.getId());
+                //adapter.setDepartmentid(departmentpredict.getId());
                 staffList = staffs;
                 if(doctorlistview!=null){
                     doctorlistview.setAdapter(adapter);
@@ -66,8 +66,8 @@ public class PredictDoctorList extends AppCompatActivity {
             @Override
             public void onResponse(Department department) {
                 departmentpredict = department;
-                //adapter.setDepartmentid(departmentpredict.getId());
-                //adapter.notifyDataSetChanged();
+                adapter.setDepartmentid(departmentpredict.getId());
+                adapter.notifyDataSetChanged();
             }
         });
         doctorlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {

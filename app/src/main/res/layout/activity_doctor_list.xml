@@ -6,32 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".activity.DoctorList">
 
-    <EditText
-        android:id="@+id/SearchDoctor"
-        android:layout_width="268dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/editbox"
-        android:hint="          Search doctor..."
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:textAlignment="center"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
-
     <ListView
         android:id="@+id/doctorlistview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchDoctor" />
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -71,18 +55,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/SearchDoctor"
-        app:layout_constraintEnd_toEndOf="@+id/SearchDoctor"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/SearchDoctor"
-        app:layout_constraintTop_toTopOf="@+id/SearchDoctor"
-        app:layout_constraintVertical_bias="0.627"
-        app:srcCompat="@android:drawable/ic_menu_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

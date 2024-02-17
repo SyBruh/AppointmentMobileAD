@@ -43,7 +43,7 @@ public class Feedback  extends JSONObject implements Serializable {
         this.id = json.optInt("id", 0);
         this.score = json.optDouble("score");
         this.Description = json.optString("description", "");
-        this.user = new User(json.optJSONObject("user"));
+        this.user = new User(json.optJSONObject("customer"));
     }
 
     public String getDescription() {

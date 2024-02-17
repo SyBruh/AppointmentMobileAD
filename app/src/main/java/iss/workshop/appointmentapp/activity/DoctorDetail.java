@@ -101,6 +101,9 @@ public class DoctorDetail extends AppCompatActivity {
 
                     @Override
                     public void onResponse(List<String> keywords) {
+                        while (keywords.size()<10){
+                            keywords.add("null");
+                        }
                         setkeywords(keywords);
                     }
                 });
